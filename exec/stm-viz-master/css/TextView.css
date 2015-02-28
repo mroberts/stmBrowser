@@ -1,0 +1,29 @@
+#container {
+	position:absolute;
+	-webkit-user-select:none;
+	width:100%;
+	height:100%;
+}
+
+#bottom {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	border-top: solid #d3d3d3 1px;
+	text-align: center;
+	background: white;
+}
+
+#bottom, #bottom .control-container {
+	display: inline-block;
+}
+
+
+body {
+	font-size:200%;
+	overflow:hidden;
+}
+
+#scatterChart-div {
+	border-right: 1px solid #d3d3d3;
+}

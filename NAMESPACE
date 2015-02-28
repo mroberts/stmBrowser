@@ -1,3 +1,4 @@
+import(httr)
 importFrom(stm, labelTopics)
 
 export(vizjson)

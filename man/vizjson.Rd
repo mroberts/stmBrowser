@@ -2,10 +2,12 @@
 \alias{vizjson}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Outputs json file and creates visualization from stm.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This function outputs necessary json files to a working directory, then
+opens a browser with the visualization of the relationship between
+covariates and topics in the stm.
 }
 \usage{
 vizjson(mod, data, covariates, text, id = NULL, n = 1000, labeltype = "prob")
@@ -13,25 +15,26 @@ vizjson(mod, data, covariates, text, id = NULL, n = 1000, labeltype = "prob")
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{mod}{
-%%     ~~Describe \code{mod} here~~
+    STM model output.
 }
   \item{data}{
-%%     ~~Describe \code{data} here~~
+    Data associated with the stm model
 }
   \item{covariates}{
-%%     ~~Describe \code{covariates} here~~
+    Names of covariates you are interested in plotting.
 }
   \item{text}{
-%%     ~~Describe \code{text} here~~
+    Name of the variable within the dataset that corresponds to the text.
 }
   \item{id}{
-%%     ~~Describe \code{id} here~~
+    Name of ID variable for each observation.
 }
   \item{n}{
-%%     ~~Describe \code{n} here~~
+    Number of observations to plot.  Maximum is 5000.
 }
   \item{labeltype}{
-%%     ~~Describe \code{labeltype} here~~
+    Type of label for topics (see labelTopics in the stm package for
+    more information)
 }
 }
 \details{
@@ -48,7 +51,7 @@ vizjson(mod, data, covariates, text, id = NULL, n = 1000, labeltype = "prob")
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+  
 }
 \note{
 %%  ~~further notes~~
@@ -60,61 +63,6 @@ vizjson(mod, data, covariates, text, id = NULL, n = 1000, labeltype = "prob")
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (mod, data, covariates, text, id = NULL, n = 1000, labeltype = "prob") 
-{
-    samp <- sample(1:nrow(data), n)
-    theta <- mod$theta[samp, ]
-    data <- data[samp, ]
-    start <- "var data = ["
-    for (i in 1:nrow(data)) {
-        doc <- list()
-        if (!is.null(id)) 
-            doc$id <- data[, id][i]
-        if (is.null(id)) 
-            doc$id <- 1:nrow(data)
-        doc$body <- data[, text][i]
-        for (j in 1:length(covariates)) {
-            if (is.factor(data[, covariates[j]])) {
-                data[, covariates[j]] <- as.character(data[, 
-                  covariates[j]])
-            }
-        }
-        for (j in 1:length(covariates)) {
-            doc[covariates[j]] <- data[, covariates[j]][i]
-        }
-        for (j in 1:ncol(theta)) {
-            doc[paste("Topic", j)] <- theta[i, j]
-        }
-        if (i != nrow(data)) 
-            start <- paste(start, toJSON(doc), ",", sep = "")
-        if (i == nrow(data)) 
-            start <- paste(start, toJSON(doc), "]", sep = "")
-    }
-    fileConn <- file("output.js")
-    writeLines(start, fileConn)
-    close(fileConn)
-    topics <- labelTopics(mod, n = 3)[[labeltype]]
-    start <- "var topics = ["
-    for (i in 1:nrow(topics)) {
-        topic <- list()
-        topic$name <- paste("Topic", i)
-        topic$list <- paste(topics[i, ], collapse = ",")
-        if (i != nrow(topics)) 
-            start <- paste(start, toJSON(topic), ",", sep = "")
-        if (i == nrow(topics)) 
-            start <- paste(start, toJSON(topic), "]", sep = "")
-    }
-    fileConn2 <- file("topics.js")
-    writeLines(start, fileConn2)
-    close(fileConn2)
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

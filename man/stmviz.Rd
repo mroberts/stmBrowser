@@ -10,7 +10,8 @@ opens a browser with the visualization of the relationship between
 covariates and topics in the stm.
 }
 \usage{
-stmviz(mod, data, covariates, text, id = NULL, n = 1000, labeltype = "prob")
+stmviz(mod, data, covariates, text, id = NULL, n = 1000, labeltype =
+"prob", directory=getwd())
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -35,7 +36,11 @@ stmviz(mod, data, covariates, text, id = NULL, n = 1000, labeltype = "prob")
   \item{labeltype}{
     Type of label for topics (see labelTopics in the stm package for
     more information)
-}
+  }
+  \item{directory}{
+    Directory where the stm visualization should be outputted. Default
+    is the current working directory.
+  }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~

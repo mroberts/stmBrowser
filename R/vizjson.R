@@ -11,9 +11,11 @@ vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
         cat("stm-visualization folder already exists, type 1 to overwrite, 0 otherwise, then press Enter.")
         y <- readLines(n=1)
         if(y==1){
+            system("rm -r stm-visualization")
             system(paste("cp -r ", paste(path.package("stmviz"),
                                          "/stm-viz-master", sep=""), " stm-visualization",
                          sep=""))
+            dir.create("stm-visualization/data")
             setwd("stm-visualization/data")
         }else if(y==0){
             cat("Write alternate folder name for visulaization, then press enter.")
@@ -21,6 +23,7 @@ vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
             system(paste("cp -r ", paste(path.package("stmviz"),
                                          "/stm-viz-master", sep=""), k,
                          sep=""))
+            dir.create(paste(k,"/data", sep=""))
             setwd(paste(k,"/data", sep=""))
 
         } else{
@@ -30,6 +33,7 @@ vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
         system(paste("cp -r ", paste(path.package("stmviz"),
                                     "/stm-viz-master", sep=""), " stm-visualization",
                      sep=""))
+        dir.create("stm-visualization/data")
         setwd("stm-visualization/data")
     }   
     samp <- sample(1:nrow(data), n)

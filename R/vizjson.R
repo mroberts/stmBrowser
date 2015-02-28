@@ -79,4 +79,8 @@ vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
     fileConn2 <- file("topics.js")
     writeLines(start, fileConn2)
     close(fileConn2)
+    setwd("..")
+    print(paste("URL is at file://", getwd(),
+                "index.html, opening now.", sep="")
+    BROWSE(paste("file://", getwd() "../index.html", sep=""))
 }

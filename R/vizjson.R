@@ -3,7 +3,37 @@
 #data: data for stm model
 #covariates: vector of covariates you want to visualize
 #text: name of covariate where the text is held
-vizjson <- function(mod, data, covariates, text, id=NULL, n=1000, labeltype="prob"){
+vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
+                    labeltype="prob", directory=getwd()){
+    #Move jss files into directory
+    setwd(directory)
+    if(file.exists("stm-visualization")){
+        cat("stm-visualization folder already exists, type 1 to overwrite, 0 otherwise, then press Enter.")
+        y <- readLines(n=1)
+        if(y==1){
+            system(paste("cp -r ", paste(path.package("stmviz"),
+                                         "/stm-viz-master", sep=""), " stm-visualization",
+                         sep=""))
+            setwd("stm-visualization/data")
+        }else if(y==0){
+            cat("Write alternate folder name for visulaization, then press enter.")
+            k <- readLines(n=1)
+            system(paste("cp -r ", paste(path.package("stmviz"),
+                                         "/stm-viz-master", sep=""), k,
+                         sep=""))
+            setwd(paste(k,"/data", sep=""))
+
+        } else{
+            stop("Error, invalid answer.")
+        }
+    }else{
+        system(paste("cp -r ", paste(path.package("stmviz"),
+                                    "/stm-viz-master", sep=""), " stm-visualization",
+                     sep=""))
+        setwd("stm-visualization/data")
+    }   
+    }
+
     samp <- sample(1:nrow(data), n)
     #Write out doc level stuff
     theta <- mod$theta[samp,]

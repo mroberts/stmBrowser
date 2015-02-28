@@ -32,8 +32,6 @@ vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
                      sep=""))
         setwd("stm-visualization/data")
     }   
-    }
-
     samp <- sample(1:nrow(data), n)
     #Write out doc level stuff
     theta <- mod$theta[samp,]

@@ -3,7 +3,7 @@
 #data: data for stm model
 #covariates: vector of covariates you want to visualize
 #text: name of covariate where the text is held
-vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
+stmviz <- function(mod, data, covariates, text, id=NULL, n=1000,
                     labeltype="prob", directory=getwd()){
     #Move jss files into directory
     setwd(directory)

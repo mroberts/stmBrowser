@@ -1,0 +1,61 @@
+<DOCTYPE HTML>
+	<html>
+	<head>
+        <!-- header/title stuff -->
+        <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+        <!--  <meta  property="og:image" content="http://viz.healthmetricsandevaluation.org/tobacco/resources/tobacco_thumb.png"></meta> -->
+        <title>STM Visualizer</title>
+       
+        <!-- Add D3 JavaSript files -->
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="lib/d3-2.10.3/lib/colorbrewer/colorbrewer.js"></script>
+        
+        <!-- Add jQuery and jQuery UI JavaSript files  -->
+       <script type="text/javascript" src="lib/jquery-1.8.2.min.js"></script>
+       <script type="text/javascript" src="lib/jquery-ui-1.10.4/js/jquery-ui-1.10.4.js"></script>
+    
+                
+        <!-- Add additonal libaries JavaSript files (these may or may not be necesssay depending on the needs of your visualization) -->
+        <script type="text/javascript" src="lib/poshytip-1.2/src/jquery.poshytip.js"></script> 
+        <script type="text/javascript" src="lib/select2-3.2/select2.js"></script> 
+        
+        <!-- Add jQuery UI css files (note we will use a different theme in the future) -->
+        <link type="text/css" rel="stylesheet" href="lib/jquery-ui-1.9.0.custom/css/smoothness/jquery-ui-1.9.0.custom.min.css"/>
+        <link type="text/css" rel="stylesheet" href="lib/select2-3.2/select2.css"/>
+        
+        <!-- css files -->
+        <link type="text/css" rel="stylesheet" href="css/TextView.css"/>
+        <link type="text/css" rel="stylesheet" href="css/tip.css"/>
+        <link type="text/css" rel="stylesheet" href="css/chart.css"/>
+
+        <!-- controls -->
+        <script type="text/javascript" src="lib/controls/controls-0.1.0/controls.js"></script>
+        <link type="text/css" rel="stylesheet" href="lib/controls/controls-0.1.0/controls.css"/>     
+
+
+        
+        <!-- scripts -->
+        <script type="text/javascript" src="js/settings.js"></script> 
+        <script type="text/javascript" src="data/output.js"></script> 
+        <script type="text/javascript" src="data/topics.js"></script> 
+        
+        <!-- Charts -->
+        <script type="text/javascript" src="js/charts/Chart.js"></script> 
+        <script type="text/javascript" src="js/charts/ScatterChart.js"></script> 
+        <script type="text/javascript" src="js/charts/TextChart.js"></script> 
+    
+
+        <!--Views -->
+        <script type="text/javascript" src="js/views/SingleView.js"></script> 
+        <script type="text/javascript" src="js/views/TextView.js"></script> 
+	</head>
+	<body>
+		<div id="container"></div>
+        <div id="bottom"></div>
+		<script type="text/javascript">
+	   		 var view = new TextView(settings.textView)
+	   	</script>
+
+
+    </body>
+</html>

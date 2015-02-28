@@ -82,5 +82,5 @@ vizjson <- function(mod, data, covariates, text, id=NULL, n=1000,
     setwd("..")
     print(paste("URL is at file://", getwd(),
                 "index.html, opening now.", sep=""))
-    BROWSE(paste("file://", getwd() "../index.html", sep=""))
+    BROWSE(paste("file://", getwd() "/index.html", sep=""))
 }

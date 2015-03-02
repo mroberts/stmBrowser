@@ -10,7 +10,7 @@ var ScatterChart = function(sets) {
 				var limit = this.id == self.settings.id ? 100 : 11
 				return self.shortenText(self.getKeyByValue(self.settings.xAxisLabels, Number(d)), limit)
 			}				
-			var formatter = d3.format('.2s')
+			var formatter = Math.abs(d) < 1 ? d3.format('.2g') : d3.format('.2s')
 			return formatter(d)
 		},
 		yTickFormat:function(d) {
@@ -19,7 +19,7 @@ var ScatterChart = function(sets) {
 				return self.shortenText(self.getKeyByValue(self.settings.yAxisLabels, Number(d)), limit)
 				// return 'test'
 			}				
-			var formatter = d3.format('.2s')
+			var formatter = Math.abs(d) < 1 ? d3.format('.2g') : d3.format('.2s')
 			return formatter(d)
 		},
 		hoverFormat:d3.format('.2s'),

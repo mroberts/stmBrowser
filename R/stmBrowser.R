@@ -12,7 +12,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         y <- readLines(n=1)
         if(y==1){
             system("rm -r stm-visualization")
-            system(paste("cp -r ", paste(path.package("stmviz"),
+            system(paste("cp -r ", paste(path.package("stmBrowser"),
                                          "/stm-viz-master", sep=""), " stm-visualization",
                          sep=""))
             dir.create("stm-visualization/data")
@@ -20,7 +20,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         }else if(y==0){
             cat("Write alternate folder name for visulaization, then press enter.")
             k <- readLines(n=1)
-            system(paste("cp -r ", paste(path.package("stmviz"),
+            system(paste("cp -r ", paste(path.package("stmBrowser"),
                                          "/stm-viz-master", sep=""), k,
                          sep=""))
             dir.create(paste(k,"/data", sep=""))
@@ -30,7 +30,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
             stop("Error, invalid answer.")
         }
     }else{
-        system(paste("cp -r ", paste(path.package("stmviz"),
+        system(paste("cp -r ", paste(path.package("stmBrowser"),
                                     "/stm-viz-master", sep=""), " stm-visualization",
                      sep=""))
         dir.create("stm-visualization/data")
@@ -56,12 +56,12 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
                 dateout <- jsonlite::toJSON(data[,covariates[j]],
                                             POSIXt="ISO8601")
                 print("made it here")
-                data[,covariates[j]] <- as.character(jsonlite::fromJSON(dateout))
+                data[,covariates[j]] <- jsonlite::fromJSON(dateout)
             }
             if(class(data[,covariates[j]])=="Date"){
                 dateout <- jsonlite::toJSON(data[,covariates[j]],
                                             Date="ISO8601")
-                data[,covariates[j]] <- as.character(jsonlite::fromJSON(dateout))
+                data[,covariates[j]] <- jsonlite::fromJSON(dateout)
             }
         }
         for(j in 1:length(covariates)){

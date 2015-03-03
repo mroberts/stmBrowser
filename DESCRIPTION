@@ -1,4 +1,4 @@
-Package: stmviz
+Package: stmBrowser
 Type: Package
 Title: Visualizations for the Structural Topic Model
 Version: 1.0

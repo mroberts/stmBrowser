@@ -1,4 +1,4 @@
 import(httr)
 importFrom(stm, labelTopics)
 
-export(stmviz)
+export(stmBrowser)

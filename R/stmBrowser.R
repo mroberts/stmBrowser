@@ -54,6 +54,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
             if("POSIXt"%in%class(data[,covariates[j]])){
                 dateout <- jsonlite::toJSON(data[,covariates[j]],
                                             POSIXt="ISO8601")
+                print("made it here")
                 data[,covariates[j]] <- as.character(jsonlite::fromJSON(dateout))
             }
             if(class(data[,covariates[j]])=="Date"){

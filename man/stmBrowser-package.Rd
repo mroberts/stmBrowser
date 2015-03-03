@@ -1,6 +1,6 @@
-\name{stmviz-package}
-\alias{stmviz-package}
-\alias{stmviz}
+\name{stmBrowser-package}
+\alias{stmBrowser-package}
+\alias{stmBrowser}
 \docType{package}
 \title{
 What the package does (short line)
@@ -12,7 +12,7 @@ More about what it does (maybe more than one line)
 }
 \details{
 \tabular{ll}{
-Package: \tab stmviz\cr
+Package: \tab stmBrowser\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
 Date: \tab 2015-02-28\cr

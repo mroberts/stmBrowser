@@ -51,6 +51,16 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
                 data[,covariates[j]]<-
                     as.character(data[,covariates[j]])
             }
+            if(class(data[,covariates[j]])=="POSIXt"){
+                dateout <- jsonlite::toJSON(data[,covariates[j]],
+                                            POSIXt="ISO8601")
+                data[,covariates[j]] <- as.character(jsonlite::fromJSON(dateout))
+            }
+            if(class(data[,covariates[j]])=="Date"){
+                dateout <- jsonlite::toJSON(data[,covariates[j]],
+                                            Date="ISO8601")
+                data[,covariates[j]] <- as.character(jsonlite::fromJSON(dateout))
+            }
         }
         for(j in 1:length(covariates)){
             doc[covariates[j]] <- data[,covariates[j]][i]
@@ -58,9 +68,9 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         for(j in 1:ncol(theta)){
             doc[paste("Topic", j)] <- theta[i,j]
         }
-        if (i!=nrow(data)) start <- paste(start, toJSON(doc), ",",
+        if (i!=nrow(data)) start <- paste(start, rjson::toJSON(doc), ",",
                 sep="")
-        if (i==nrow(data)) start <- paste(start, toJSON(doc), "]", sep="")
+        if (i==nrow(data)) start <- paste(start, rjson::toJSON(doc), "]", sep="")
     }
     fileConn <- file("output.js")
     writeLines(start, fileConn)
@@ -72,9 +82,9 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         topic <- list()
         topic$name <- paste("Topic", i)
         topic$list <- paste(topics[i,], collapse=",")
-        if (i!=nrow(topics)) start <- paste(start, toJSON(topic), ",",
+        if (i!=nrow(topics)) start <- paste(start, rjson::toJSON(topic), ",",
                         sep="")
-        if (i==nrow(topics)) start <- paste(start, toJSON(topic), "]", sep="")
+        if (i==nrow(topics)) start <- paste(start, rjson::toJSON(topic), "]", sep="")
     }
     fileConn2 <- file("topics.js")
     writeLines(start, fileConn2)

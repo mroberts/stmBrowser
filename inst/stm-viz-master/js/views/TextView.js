@@ -2,7 +2,7 @@
 var TextView = function(sets) {
 	var self = this 
 	defaults = {
-		xVar:'Topic 1', 
+		xVar:'dateVal', 
 		yVar:'Topic 2',
 		radiusVar:'Topic 3', 
 		colorVar:'Topic 4',
@@ -39,7 +39,6 @@ TextView.prototype.getVariableLabels = function(varName, labelVar) {
 		    return 0;
 		}).filter(function(d) {return typeof(d) != 'undefined'})
 		.map(function(d,i){
-			console.log(d)
 			self.settings[labelVar][d] = labelVar == 'colorVar' ? d : i
 		})
 	}
@@ -55,7 +54,6 @@ TextView.prototype.getLabels = function() {
 	self.getVariableLabels('xVar', 'xAxisLabels')
 	self.getVariableLabels('yVar', 'yAxisLabels')
 	self.getVariableLabels('colorVar', 'colorLabels')
-	// console.log('get labels colroVar ', self.settings.colorVar)
 	if(self.settings.colorVar == 'none' | (oldColorLength == 0 && d3.keys(self.settings.colorLabels).length > 0) | (d3.keys(oldColorLabels).length > 0 && d3.keys(self.settings.colorLabels).length == 0)) {
 		self.settings.changedColorType = true
 	}
@@ -67,7 +65,6 @@ TextView.prototype.prepData = function(chart) {
 	switch(chart) {
 		case 'scatterChart':
 			self.update = function(control) {
-				console.log('update ', control[0], self.settings.changedColorType)
 				self.getLabels()
 				var resetScale = ((self.settings.changedColorType == false && (control[0] == 'radiusVar' | control[0] == 'colorVar' |  control == 'click') | control == 'zoom')) ? false : true
 				if(self.settings.colorVar == 'none' && control[0] == 'radiusVar' | control == 'click') resetScale = false
@@ -80,11 +77,16 @@ TextView.prototype.prepData = function(chart) {
 			}
 			settings[chart].data = self.settings.data.map(function(d, i) {
 				var id = self.settings.idVariable == undefined ? i : d[self.settings.idVariable]
-				var xVal = Number(d[self.settings.xVar]) != d[self.settings.xVar] ? self.settings.xAxisLabels[d[self.settings.xVar]] : d[self.settings.xVar]
-				var yVal = Number(d[self.settings.yVar]) != d[self.settings.yVar]  ? self.settings.yAxisLabels[d[self.settings.yVar]] : d[self.settings.yVar]
+				if(self.settings.xVar == 'dateVal') var xVal = new Date(d[self.settings.xVar])
+				else var xVal = Number(d[self.settings.xVar]) != d[self.settings.xVar] ? self.settings.xAxisLabels[d[self.settings.xVar]] : d[self.settings.xVar]
+				
+				if(self.settings.yVar == 'dateVal') var yVal = new Date(d[self.settings.yVar])
+				else var yVal = Number(d[self.settings.yVar]) != d[self.settings.yVar]  ? self.settings.yAxisLabels[d[self.settings.yVar]] : d[self.settings.yVar]
 				return {x:xVal, y:yVal, id:id, text:d.body, radiusValue:d[self.settings.radiusVar], colorValue:d[self.settings.colorVar]}
 			})
 			settings[chart].xLabel = self.settings.xVar
+			settings[chart].xScaleType = self.settings.xVar == 'dateVal' ? 'date' : 'linear'
+			settings[chart].yScaleType = self.settings.yVar == 'dateVal' ? 'date' : 'linear'
 			settings[chart].xAxisLabels = self.settings.xAxisLabels
 			settings[chart].yAxisLabels = self.settings.yAxisLabels
 			settings[chart].colorLabels = self.settings.colorLabels
@@ -185,7 +187,7 @@ TextView.prototype.getControlValues = function() {
 	})
 
 	self.colorValues = d3.keys(self.settings.data[0]).filter(function(d) {
-		return d!= 'body'
+		return d!= 'body' && d!='dateVal'
 	})
 
 	self.colorValues.unshift('none')

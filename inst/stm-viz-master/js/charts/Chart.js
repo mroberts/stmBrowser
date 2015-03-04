@@ -93,11 +93,16 @@ Chart.prototype.setScales = function() {
 	var elementSize = self.settings.getElementSize()
 	var limits = self.settings.lock == true ? self.settings.limits : self.getLimits()
 	if(limits != undefined && limits.x != undefined) {
+
 		if(self.settings.xScaleType == 'ordinal' && self.settings.ordinalType == 'bands') {
 			self.xScale = d3.scale.ordinal().rangeRoundBands([elementSize.width, self.settings.plotWidth - elementSize.width], self.settings.getXrangeBand()).domain(limits.x)
 		}
 		else if (self.settings.xScaleType == 'ordinal' && self.settings.ordinalType == 'points') {
 			self.xScale = d3.scale.ordinal().rangePoints([elementSize.width/2, self.settings.plotWidth - elementSize.width/2],  self.settings.getXrangeBand(self)).domain(limits.x)		
+		}
+		else if(self.settings.xScaleType == 'date') {
+			var width = self.settings.bin == 'outliers' ? self.settings.legend.width : self.settings.plotWidth
+			self.xScale = d3.time.scale().range([elementSize.width, width - elementSize.width]).domain([limits.x.min, limits.x.max])
 		}
 		else {
 			var width = self.settings.bin == 'outliers' ? self.settings.legend.width : self.settings.plotWidth
@@ -109,18 +114,31 @@ Chart.prototype.setScales = function() {
 			.orient(self.settings.xAxisPosition)
 			.ticks(5)
 			.tickSize(self.settings.getXtickSize())
+		if(self.settings.xScaleType != 'date') {
+			self.xaxis 
 			.tickFormat(self.settings.xTickFormat)
 			.tickValues(d3.keys(self.settings.xAxisLabels).length >0 ? d3.values(self.settings.xAxisLabels) : null)
+		}
+
 	}
 	if(limits != undefined && limits.y != undefined) {
-		self.yScale= d3.scale.linear().range([self.settings.plotHeight - elementSize.height, elementSize.height]).domain([limits.y.min, limits.y.max])
+		if(self.settings.yScaleType == 'date') {
+			var width = self.settings.bin == 'outliers' ? self.settings.legend.width : self.settings.plotWidth
+			self.yScale = d3.time.scale().range([self.settings.plotHeight - elementSize.height, elementSize.height]).domain([limits.y.min, limits.y.max])
+		}
+		else self.yScale= d3.scale.linear().range([self.settings.plotHeight - elementSize.height, elementSize.height]).domain([limits.y.min, limits.y.max])
 		self.yaxis = d3.svg.axis()
 					.scale(self.yScale)
 					.orient("left")
 					.tickSize(self.settings.getYtickSize())
 					.ticks(5)
-					.tickFormat(self.settings.yTickFormat)
-					.tickValues(d3.keys(self.settings.yAxisLabels).length >0 ? d3.values(self.settings.yAxisLabels) : null)
+
+		if(self.settings.yScaleType != 'date') {
+			self.yaxis 
+				.tickFormat(self.settings.yTickFormat)
+				.tickValues(d3.keys(self.settings.yAxisLabels).length >0 ? d3.values(self.settings.yAxisLabels) : null)
+		}
+					
 
 	}
 
@@ -266,7 +284,6 @@ if(self.settings.hasXLabel == true) {
 // Update
 Chart.prototype.update = function(sets, resetScale) {
 	var self = this
-	console.log('resetScale ', resetScale)
 	var resetScale = resetScale == undefined ? true : resetScale
 	self.settings = $.extend(false, self.settings, sets)
 	self.data = self.settings.data

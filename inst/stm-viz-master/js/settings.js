@@ -21,8 +21,20 @@ var settings = {
 		poshyEvents:[
 			{wrapper:'scatterChart-div', klass:'circle', content:function(d){
 				var dat = this.__data__
-				var text = '<b>' + view.settings.xVar + '</b>: ' + view.charts[0].settings.xTickFormat(Number(dat.x)) + '</br>'
-				text += '<b>' + view.settings.yVar + '</b>: ' + view.charts[0].settings.yTickFormat(Number(dat.y)) + '</br>'
+				if(view.charts[0].settings.xScaleType == 'date') {
+					var formatter = d3.time.format("%d-%b-%Y");
+					var xVal = formatter(dat.x)
+				}
+				else var xVal =  view.charts[0].settings.xTickFormat(Number(dat.x))
+				var yVal = 'YVAL HERE'
+				
+				if(view.charts[0].settings.yScaleType == 'date') {
+					var formatter = d3.time.format("%d-%b-%Y");
+					var yVal = formatter(dat.y)
+				}
+				else var yVal = view.charts[0].settings.yTickFormat(Number(dat.y))
+				var text = '<b>' + view.settings.xVar + '</b>: ' + xVal + '</br>'
+				text += '<b>' + view.settings.yVar + '</b>: ' + yVal + '</br>'
 				text += dat.text.substr(0, 100) 
 				if(dat.text.length>100) text += '...'
 				return text

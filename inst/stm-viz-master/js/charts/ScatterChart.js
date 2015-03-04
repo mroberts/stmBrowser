@@ -5,11 +5,11 @@ var ScatterChart = function(sets) {
 	defaults = {
 		hasAxes:true, 
 		hasSvg:true,
-		xTickFormat:function(d) {
+		xTickFormat: function(d) {
 			if(d3.keys(self.settings.xAxisLabels).length >0) {
 				var limit = this.id == self.settings.id ? 100 : 11
 				return self.shortenText(self.getKeyByValue(self.settings.xAxisLabels, Number(d)), limit)
-			}				
+			}			
 			var formatter = Math.abs(d) < 1 ? d3.format('.2g') : d3.format('.2s')
 			return formatter(d)
 		},
@@ -37,7 +37,7 @@ var ScatterChart = function(sets) {
 		dash:function(d) {
 			return "5,0"
 		}, 
-		showZero:true, 
+		showZero:false, 
 		strokeWidth:function(d) {return '4px'},
 		multiHover:true,
 		hasLegend:false,
@@ -82,8 +82,8 @@ ScatterChart.prototype.getLimits = function() {
 		limits.x.max = d3.max(self.settings.data, function(d) {return d.x}) 
 	}
 	var values = []
-	limits.y.min = self.settings.showZero == true ? 0 : d3.min(self.settings.data, function(d) {return Number(d.y)}) 
-	limits.y.max = d3.max(self.settings.data, function(d) {return Number(d.y)}) 
+	limits.y.min = self.settings.showZero == true ? 0 : d3.min(self.settings.data, function(d) {return d.y}) 
+	limits.y.max = d3.max(self.settings.data, function(d) {return d.y}) 
 	return limits
 }
 

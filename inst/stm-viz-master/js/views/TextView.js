@@ -108,7 +108,7 @@ TextView.prototype.prepData = function(chart) {
 			var tmp = 
 			settings[chart].text = 'hello'
 			settings[chart].text = self.settings.data.filter(function(d){
-				return Number(d.id) == Number(self.settings.selected)})[0].body
+				return String(d.id) == String(self.settings.selected)})[0].body
 			break
 
 	}

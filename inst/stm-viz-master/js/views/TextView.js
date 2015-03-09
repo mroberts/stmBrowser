@@ -99,7 +99,7 @@ TextView.prototype.prepData = function(chart) {
 			settings[chart].colorLabels = self.settings.colorLabels
 			settings[chart].colorVar = self.settings.colorVar
 			settings[chart].yLabel = self.settings.yVar
-			settings[chart].selected = Number(self.settings.selected)
+			settings[chart].selected = self.settings.selected
 			settings[chart].legendLabel = self.settings.colorVar
 			self.setRadius()
 			self.setColor()

@@ -2,7 +2,7 @@
 var TextView = function(sets) {
 	var self = this 
 	defaults = {
-		xVar:'dateVal', 
+		xVar:'Topic 1', 
 		yVar:'Topic 2',
 		radiusVar:'Topic 3', 
 		colorVar:'Topic 4',

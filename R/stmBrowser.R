@@ -45,7 +45,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     for(i in 1:nrow(data)){
         doc <- list()
         if(!is.null(id)) doc$id <- data[,id][i]
-        if(is.null(id)) doc$id <- 1:nrow(data)[i]
+        if(is.null(id)) doc$id <- i
         doc$body <- data[,text][i]
         for(j in 1:length(covariates)){
             if(is.factor(data[,covariates[j]])) {

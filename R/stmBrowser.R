@@ -20,6 +20,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         }else if(y==0){
             cat("Write alternate folder name for visulaization, then press enter.")
             k <- readLines(n=1)
+            print(k)
             system(paste("cp -r ", paste(path.package("stmBrowser"),
                                          "/stm-viz-master", sep=""), k,
                          sep=""))
@@ -44,7 +45,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     for(i in 1:nrow(data)){
         doc <- list()
         if(!is.null(id)) doc$id <- data[,id][i]
-        if(is.null(id)) doc$id <- 1:nrow(data)
+        if(is.null(id)) doc$id <- 1:nrow(data)[i]
         doc$body <- data[,text][i]
         for(j in 1:length(covariates)){
             if(is.factor(data[,covariates[j]])) {

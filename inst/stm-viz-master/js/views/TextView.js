@@ -59,6 +59,13 @@ TextView.prototype.getLabels = function() {
 	}
 }
 
+TextView.prototype.isDate = function(varName) {
+	var self = this
+	var val = self.settings.data[0][varName]
+	if(typeof val != "string") return false
+	var re = /^\d{4}-\d{2}-\d{2}/
+	return val.match(re) == null ? false : true
+}
 TextView.prototype.prepData = function(chart) {
 	var self = this
 	if(typeof self.settings.selected == 'undefined') self.settings.selected = self.settings.data[0].id
@@ -77,16 +84,16 @@ TextView.prototype.prepData = function(chart) {
 			}
 			settings[chart].data = self.settings.data.map(function(d, i) {
 				var id = self.settings.idVariable == undefined ? i : d[self.settings.idVariable]
-				if(self.settings.xVar == 'dateVal') var xVal = new Date(d[self.settings.xVar])
+				if(self.isDate(self.settings.xVar)) var xVal = new Date(d[self.settings.xVar])
 				else var xVal = Number(d[self.settings.xVar]) != d[self.settings.xVar] ? self.settings.xAxisLabels[d[self.settings.xVar]] : d[self.settings.xVar]
 				
-				if(self.settings.yVar == 'dateVal') var yVal = new Date(d[self.settings.yVar])
+				if(self.isDate(self.settings.yVar)) var yVal = new Date(d[self.settings.yVar])
 				else var yVal = Number(d[self.settings.yVar]) != d[self.settings.yVar]  ? self.settings.yAxisLabels[d[self.settings.yVar]] : d[self.settings.yVar]
 				return {x:xVal, y:yVal, id:id, text:d.body, radiusValue:d[self.settings.radiusVar], colorValue:d[self.settings.colorVar]}
 			})
 			settings[chart].xLabel = self.settings.xVar
-			settings[chart].xScaleType = self.settings.xVar == 'dateVal' ? 'date' : 'linear'
-			settings[chart].yScaleType = self.settings.yVar == 'dateVal' ? 'date' : 'linear'
+			settings[chart].xScaleType = self.isDate(self.settings.xVar) ? 'date' : 'linear'
+			settings[chart].yScaleType = self.isDate(self.settings.yVar) ? 'date' : 'linear'
 			settings[chart].xAxisLabels = self.settings.xAxisLabels
 			settings[chart].yAxisLabels = self.settings.yAxisLabels
 			settings[chart].colorLabels = self.settings.colorLabels
@@ -187,7 +194,7 @@ TextView.prototype.getControlValues = function() {
 	})
 
 	self.colorValues = d3.keys(self.settings.data[0]).filter(function(d) {
-		return d!= 'body' && d!='dateVal'
+		return d!= 'body' && !self.isDate(d)
 	})
 
 	self.colorValues.unshift('none')

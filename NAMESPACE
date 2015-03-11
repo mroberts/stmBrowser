@@ -1,6 +1,6 @@
 import(httr)
 import(stm)
-importFROM(jsonlite, toJSON)
+importFrom(jsonlite, toJSON)
 importFrom(rjson, toJSON)
 
 export(stmBrowser)

@@ -6,6 +6,7 @@
 stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
                     labeltype="prob", directory=getwd()){
     #Move jss files into directory
+    oldwd <- getwd()
     setwd(directory)
     if(file.exists("stm-visualization")){
         cat("stm-visualization folder already exists, type 1 to overwrite, 0 otherwise, then press Enter.")
@@ -94,4 +95,5 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     print(paste("URL is at", getwd(),
                 "/index.html, opening now.", sep=""))
     BROWSE(paste(getwd(), "/index.html", sep=""))
+    setwd(oldwd)
 }

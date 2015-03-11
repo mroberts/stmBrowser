@@ -6,5 +6,6 @@ Date: 2015-02-28
 Author: Michael K. Freeman, Jason Chuang, Margaret E. Roberts, Brandon M. Stewart and Dustin Tingley
 Maintainer: Margaret E. Roberts <meroberts@ucsd.edu>
 Description: This visualization allows users to interactively explore the relationships between topics and the covariates estimated from the stm package in R.  
+Imports: rjson, stm, jsonlite, httr
 License: MIT + file LICENSE
 URL: http://structuraltopicmodel.com

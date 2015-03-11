@@ -109,7 +109,7 @@ ScatterChart.prototype.draw = function(resetScale, duration) {
 	self.drawLegend()
 	// var select = $("#id_" + this.settings.highlighted)[0]
 	var select = $('#circle-'+self.settings.selected)[0]
-	if(typeof(select)!= undefined) select.parentNode.appendChild(select)
+	if(typeof(select)!= 'undefined') select.parentNode.appendChild(select)
 
 }
 

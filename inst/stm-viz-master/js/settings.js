@@ -78,11 +78,18 @@ var settings = {
 	},
 	textChart: {
 		id:'textChart', 
-		getWidth:function(chart) {return $('#'+chart.settings.container).width()/3},
+		getWidth:function(chart) {
+			var width  = $('#'+chart.settings.container).width()/3 - 10
+			console.log('width ', width)
+			return width
+		},
 		getPosition:function(chart){return {
 			top:0, 
 			left:$('#'+chart.settings.container).width()*2/3
-		}}
+		}}, 
+		getHeight:function(chart) {
+			return $('#' + chart.settings.container).innerHeight() - 70 - $('#bottom').height()
+		},
 
 	},
 }

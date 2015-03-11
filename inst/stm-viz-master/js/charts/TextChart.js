@@ -33,8 +33,10 @@ TextChart.prototype = Object.create(Chart.prototype)
 TextChart.prototype.draw = function() {
 	var self = this
 	if(self.textWrapper == undefined) {
-		 self.textWrapper = self.div.append('div').attr('id', self.settings.id + '-wrapper').style('text-align', 'left').style('margin-top', '7px')
+		 self.textWrapper = self.div.append('div').attr('id', self.settings.id + '-wrapper').style('text-align', 'left')
 	}
+	self.textWrapper.style('width', self.settings.width + 'px')
+		.style('height', self.settings.height + 'px')
 	var textData = typeof self.settings.text == 'string' ? [self.settings.text] : self.settings.text
 	var text = self.textWrapper.selectAll('.text').data(textData)
 

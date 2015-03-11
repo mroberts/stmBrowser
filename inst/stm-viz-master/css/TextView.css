@@ -27,3 +27,11 @@ body {
 #scatterChart-div {
 	border-right: 1px solid #d3d3d3;
 }
+
+#textChart-wrapper{
+	overflow-y:auto;
+}
+
+#textChart-divtitle {
+	padding-bottom:9px;
+}

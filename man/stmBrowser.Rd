@@ -67,7 +67,7 @@ stm.out <- stm(out$documents, out$vocab, K=50,
                               data=out$meta, max.em.its=10) 
 library(stmBrowser)
 stmBrowser(stm.out, data=out$meta, c("rating", "date"),
-        text="documents", id="docname",
+        text="text",
 directory="/home/jeffrey/Dropbox/STMviz")
 ##End(not run)
 }

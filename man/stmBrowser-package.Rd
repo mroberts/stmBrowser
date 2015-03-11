@@ -3,40 +3,34 @@
 \alias{stmBrowser}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+  STM Browser
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
-}
-\details{
-\tabular{ll}{
-Package: \tab stmBrowser\cr
-Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2015-02-28\cr
-License: \tab What license is it under?\cr
-}
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+  This package creates a browser visualization of the topics and
+  covariate relationships computed from the Structural Topic Model. The
+  most important and only function in the package is
+  \code{\link{stmBrowser}}, which creates and opens a browser that the
+  user can use to explore the output from the STM.
 }
 \author{
-Who wrote it
+Author: Michael Freeman, Jason Chuang, Margaret E. Roberts, Brandon
+M. Stewart, and Dustin Tingley.
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Maintainer: Margaret E. Roberts <meroberts@ucsd.edu>
 }
 \references{
-~~ Literature or other references for background information ~~
-}
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
-~~ the R documentation directory ~~
+  Roberts, M., Stewart, B., Tingley, D., and Airoldi, E. (2013)
+  "The
+  structural topic model and applied social science." In Advances in
+  Neural Information Processing Systems Workshop on Topic Models:
+  Computation, Application, and Evaluation. http://goo.gl/uHkXAQ
+
+  Roberts, M., Stewart, B., Tingley, D., Lucas, C., Leder-Luis, J.,
+  Gadarian, S., Albertson, B., Albertson, B. and Rand,
+  D. (Forthcoming). "Structural topic models for open ended survey
+  responses." American Journal of Political Science http://goo.gl/0x0tHJ
+  }                        
 \keyword{ package }
 \seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
-~~ simple examples of the most important functions ~~
+  \code{\link{stmBrowser}}
 }

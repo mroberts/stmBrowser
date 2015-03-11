@@ -13,7 +13,7 @@
   user can use to explore the output from the STM.
 }
 \author{
-Author: Michael Freeman, Jason Chuang, Margaret E. Roberts, Brandon
+Author: Michael K. Freeman, Jason Chuang, Margaret E. Roberts, Brandon
 M. Stewart, and Dustin Tingley.
 
 Maintainer: Margaret E. Roberts <meroberts@ucsd.edu>

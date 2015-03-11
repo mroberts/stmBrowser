@@ -20,8 +20,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         }else if(y==0){
             cat("Write alternate folder name for visualization, then press enter.")
             k <- readLines(n=1)
-            print(k)
-            dir.create(k)
+            system(paste("rm -r ", k))
             system(paste("cp -r", paste(path.package("stmBrowser"),
                                          "/stm-viz-master", sep=""), k,
                          sep=" "))

@@ -54,7 +54,10 @@ stmBrowser(mod, data, covariates, text, id = NULL, n = 1000, labeltype ="prob", 
 \code{\link{stm}}
 }
 \examples{
+## Not run:
 library(stmBrowser)
 stmBrowser(stm.out, data=out$meta, c("rating", "date"),
-        text="documents", id="docname", directory="/home/jeffrey/Dropbox/STMviz")
+        text="documents", id="docname",
+directory="/home/jeffrey/Dropbox/STMviz")
+##End(not run)
 }

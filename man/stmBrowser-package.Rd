@@ -1,6 +1,6 @@
 \name{stmBrowser-package}
 \alias{stmBrowser-package}
-\alias{stmBrowser}
+\alias{stmBrowser-package}
 \docType{package}
 \title{
   STM Browser

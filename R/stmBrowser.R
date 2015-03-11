@@ -21,6 +21,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
             cat("Write alternate folder name for visulaization, then press enter.")
             k <- readLines(n=1)
             print(k)
+            system(paste("mkdir("k")", sep=""))
             system(paste("cp -r ", paste(path.package("stmBrowser"),
                                          "/stm-viz-master", sep=""), k,
                          sep=""))

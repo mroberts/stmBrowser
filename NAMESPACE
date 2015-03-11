@@ -1,6 +1,6 @@
 import(httr)
-importFrom(stm, labelTopics)
-import(rjson)
+importFrom(stm, labelTopics
 import(jsonlite)
+import(rjson)
 
 export(stmBrowser)

@@ -1,5 +1,5 @@
 import(httr)
-importFrom(stm, labelTopics)
+import(stm)
 import(jsonlite)
 import(rjson)
 

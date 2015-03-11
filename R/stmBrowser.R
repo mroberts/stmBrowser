@@ -22,9 +22,9 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
             k <- readLines(n=1)
             print(k)
             dir.create(k)
-            system(paste("cp -r ", paste(path.package("stmBrowser"),
+            system(paste("cp -r", paste(path.package("stmBrowser"),
                                          "/stm-viz-master", sep=""), k,
-                         sep=""))
+                         sep=" "))
             dir.create(paste(k,"/data", sep=""))
             setwd(paste(k,"/data", sep=""))
 

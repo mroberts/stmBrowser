@@ -46,28 +46,16 @@ stmBrowser(mod, data, covariates, text, id = NULL, n = 1000, labeltype =
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  The html file for the browser will be written to the folder the user
+  selects as \code{index.html}.  The user can open this webpage to view
+  the browser.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-  
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{link{stm}}
 }
 \examples{
+library(stmBrowser)
+stmBrowser(stm.out, data=out$meta, c("rating", "date"),
+        text="documents", id="docname", directory="/home/jeffrey/Dropbox/STMviz")
 }
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

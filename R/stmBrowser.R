@@ -4,9 +4,19 @@
 #covariates: vector of covariates you want to visualize
 #text: name of covariate where the text is held
 stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
-                    labeltype="prob", directory=getwd()){
-    #Move jss files into directory
+                       labeltype="prob", directory=getwd()){
+
+    #Error checking:
+    if(nrow(data)!=nrow(mod$theta)){
+        stop("Data has a different number of rows than the STM output")
+    }
+    if(class(covariates)!="character"){
+        stop("Please pass the names of the covariates as character strings.")
+    }
+    
     oldwd <- getwd()
+
+        #Move jss files into directory
     setwd(directory)
     if(file.exists("stm-visualization")){
         cat("stm-visualization folder already exists, type 1 to overwrite, 0 otherwise, then press Enter.")
@@ -37,7 +47,9 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
                      sep=""))
         dir.create("stm-visualization/data")
         setwd("stm-visualization/data")
-    }   
+    }
+    n <- min(nrow(data), n)
+    print(paste("Sampling", n, "documents for visualization."))
     samp <- sample(1:nrow(data), n)
     #Write out doc level stuff
     theta <- mod$theta[samp,]
@@ -45,7 +57,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     start <- "var data = ["
     for(i in 1:nrow(data)){
         doc <- list()
-        if(!is.null(id)) doc$id <- data[,id][i]
+        if(!is.null(id)) doc$id <- str_replace(data[,id][i], ".", "-")
         if(is.null(id)) doc$id <- i
         doc$body <- data[,text][i]
         for(j in 1:length(covariates)){
@@ -83,8 +95,9 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     for(i in 1:nrow(topics)){
         topic <- list()
         topic$name <- paste("Topic", i)
-        topic$list <- paste(topics[i,], collapse=",")
-        if (i!=nrow(topics)) start <- paste(start, rjson::toJSON(topic), ",",
+        topic$list <- paste(topics[i,], collapse=", ")
+        if (i!=nrow(topics)) start <- paste(start,
+                rjson::toJSON(topic), ",",
                         sep="")
         if (i==nrow(topics)) start <- paste(start, rjson::toJSON(topic), "]", sep="")
     }

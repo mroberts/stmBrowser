@@ -34,7 +34,7 @@ stmBrowser(mod, data, covariates, text, id = NULL,
     Number of observations to plot.  Maximum is 5000.
 }
   \item{labeltype}{
-    Type of label for topics (see labelTopics in the stm package for
+    Type of label for topics (see \code{\link[stm]{labelTopics}} in the \pkg{stm} package for
     more information)
   }
   \item{directory}{

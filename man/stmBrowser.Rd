@@ -42,9 +42,6 @@ stmBrowser(mod, data, covariates, text, id = NULL,
     is the current working directory.
   }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
   The html file for the browser will be written to the folder the user
   selects as \code{index.html}.  The user can open this webpage to view

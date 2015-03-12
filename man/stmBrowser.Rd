@@ -52,12 +52,12 @@ stmBrowser(mod, data, covariates, text, id = NULL,
 \code{\link[stm]{stm}}
 }
 \examples{
-## Not run:
+\dontrun{
 library(stm)
 data(poliblog5k)
 #Create date
 dec312007 <- as.numeric(as.Date("2007-12-31"))
-poliblog5k.meta$date <- as.Date(dec312007+poliblogs$day,
+poliblog5k.meta$date <- as.Date(dec312007+poliblog5k.meta$day,
                           origin="1970-01-01")
 out <- prepDocuments(poliblog5k.docs, poliblog5k.voc, poliblog5k.meta)
 stm.out <- stm(out$documents, out$vocab, K=50,
@@ -68,5 +68,5 @@ library(stmBrowser)
 stmBrowser(stm.out, data=out$meta, c("rating", "date"),
         text="text",
 directory="/home/jeffrey/Dropbox/STMviz")
-##End(not run)
+}
 }

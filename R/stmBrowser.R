@@ -22,7 +22,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         cat("stm-visualization folder already exists, type 1 to overwrite, 0 otherwise, then press Enter.")
         y <- readLines(n=1)
         if(y==1){
-            unlink("stm-visualization")
+            dir.remove("stm-visualization")
             dir.create("stm-visualization")
             dir.create("stm-visualization/stm-viz-master")
             files = list.files(paste(path.package("stmBrowser"),

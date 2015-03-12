@@ -92,8 +92,8 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     writeLines(start, fileConn2)
     close(fileConn2)
     setwd("..")
-    print(paste("URL is at", getwd(),
+    cat(paste("URL is at ", getwd(),
                 "/index.html, opening now.", sep=""))
-    BROWSE(paste(getwd(), "/index.html", sep=""))
     setwd(oldwd)
+    browseURL(paste(getwd(), "/index.html", sep=""))
 }

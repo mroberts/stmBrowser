@@ -66,7 +66,6 @@ stm.out <- stm(out$documents, out$vocab, K=50,
                max.em.its=10) #generally run models longer than this. 
 library(stmBrowser)
 stmBrowser(stm.out, data=out$meta, c("rating", "date"),
-        text="text",
-directory="/home/jeffrey/Dropbox/STMviz")
+        text="text")
 }
 }

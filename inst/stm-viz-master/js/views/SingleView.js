@@ -22,14 +22,15 @@ SingleView.prototype.init = function(sets) {
 			})
 		}
 	}
+	
 	self.update = function(control) {
 		self.charts.map(function(chart,i) {
 			self.prepData(chart.settings.id)
 			self.changeTitle()
 			chart.update(settings[chart.settings.id], control)
 		})
-		self.updatePoshys()
 	}
+
 	self.build = function(init) {
 		var build = function() {
 			self.addTitle()		
@@ -70,6 +71,7 @@ SingleView.prototype.loadData = function(callback) {
     }
 	if(typeof callback == 'function') callback(args)
 }
+
 // Update Charts
 SingleView.prototype.updateCharts = function(control,value) {
 	var self = this
@@ -100,8 +102,6 @@ SingleView.prototype.changeTitle = function() {
 }
 
 
-// Build view	
-// SingleView.prototype.
 // Add click events to view
 SingleView.prototype.addClickEvents = function() {
 	var self = this
@@ -164,18 +164,6 @@ SingleView.prototype.addHoverEvents = function() {
 	})
 }
 
-// // Add hover events to view
-// SingleView.prototype.addContentHoverEvents = function() {
-// 	var self = this
-// 	if(self.settings.contentHoverEvents == undefined) return
-// 	self.settings.contentHoverEvents.map(function(hover) {
-// 		$(document).off('mouseover', '#' + hover.wrapper + ' [class~=' + hover.klass + ']')
-// 		$(document).off('mouseout', '#' + hover.wrapper + ' [class~=' + hover.klass + ']')		
-// 		$(document).on('mouseover touchstart', '#' + hover.wrapper + ' [class~=' + hover.klass + ']', listener)
-// 		$(document).on('mouseout touchend', '#' + hover.wrapper + ' [class~=' + hover.klass + ']', listener)		
-// 	})
-// }
-
 
 // Add poshy events to view
 SingleView.prototype.addPoshyEvents = function() {
@@ -203,10 +191,3 @@ SingleView.prototype.addPoshyEvents = function() {
 	})
 }
 
-SingleView.prototype.updatePoshys = function() {
-	var self = this
-	if(self.settings.poshyEvents == undefined) return
-	self.settings.poshyEvents.map(function(poshy) {
-		// if(poshy.static != true) $('#' + poshy.wrapper + ' [class~=' + poshy.klass + ']').poshytip('update', poshy.content())
-	})
-}

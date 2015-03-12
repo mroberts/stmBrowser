@@ -1,5 +1,4 @@
 // ScatterChart object function -- inherits from Chart
-var test
 var ScatterChart = function(sets) {
 	var self = this 
 	defaults = {
@@ -17,7 +16,6 @@ var ScatterChart = function(sets) {
 			if(d3.keys(self.settings.yAxisLabels).length >0) {
 				var limit = this.id == self.settings.id ? 100 : 11
 				return self.shortenText(self.getKeyByValue(self.settings.yAxisLabels, Number(d)), limit)
-				// return 'test'
 			}				
 			var formatter = Math.abs(d) < 1 ? d3.format('.2g') : d3.format('.2s')
 			return formatter(d)
@@ -95,6 +93,7 @@ ScatterChart.prototype.draw = function(resetScale, duration) {
 	if(resetScale == true) self.setScales()
 	self.getSize()
 	if(resetScale == true) self.setScales()
+	
 	// draw bubbles
 	var circles = self.g.selectAll('.circle').data(self.settings.data, function(d) {return d.id})
 	circles.exit().remove()
@@ -102,17 +101,16 @@ ScatterChart.prototype.draw = function(resetScale, duration) {
 	self.g.selectAll('.circle').transition().duration(500).call(self.circlePositionFunction)
 	
 	if(self.settings.zoomAble == true && resetScale == true) {
-		// self.g.call(d3.behavior.zoom().x(self.xScale).y(self.yScale).scaleExtent([1, 8]).on("zoom", self.zoom))
 		self.zoomer = d3.behavior.zoom().x(self.xScale).y(self.yScale).scaleExtent([1, 15]).on("zoom", self.zoom)
 		self.g.call(self.zoomer)
 	}
 	self.drawLegend()
-	// var select = $("#id_" + this.settings.highlighted)[0]
 	var select = $('#circle-'+self.settings.selected)[0]
 	if(typeof(select)!= 'undefined') select.parentNode.appendChild(select)
 
 }
 
+// Draw a legend
 ScatterChart.prototype.drawLegend = function() {
 	var self = this
 	$('#' + self.settings.id + '-legend-wrapper').remove()
@@ -121,7 +119,7 @@ ScatterChart.prototype.drawLegend = function() {
 	else self.drawCategoricalLegend()
 }
 
-
+// Legend for categorical variables
 ScatterChart.prototype.drawCategoricalLegend = function() {
 	var self = this
 	var x =  self.xScale.range()[1] + self.settings.margin.left + 40
@@ -143,44 +141,43 @@ ScatterChart.prototype.drawCategoricalLegend = function() {
 	var text = labels.append('text').call(self.legendTextFunc)
 }
 
+// Legend for continous variables
 ScatterChart.prototype.drawContinuousLegend = function() {
-	// if(self.settings.legendBuilt != true) {
-		var self = this
-		self.legendWrapper = self.div.append('div').attr('id', self.settings.id + '-legend-wrapper').style('margin-top', '26px')
-		self.legendDiv = self.legendWrapper.append('div').attr('id', self.settings.id + '-legend-div')
-		self.legend = self.legendDiv
-			.append("svg")		
-			.attr('id', self.settings.id + '-legend-svg')
+	var self = this
+	self.legendWrapper = self.div.append('div').attr('id', self.settings.id + '-legend-wrapper').style('margin-top', '26px')
+	self.legendDiv = self.legendWrapper.append('div').attr('id', self.settings.id + '-legend-div')
+	self.legend = self.legendDiv
+		.append("svg")		
+		.attr('id', self.settings.id + '-legend-svg')
 
-		self.gradient = self.legend
-		.append("svg:defs")
-			.append("svg:linearGradient")
-			.attr("id", "map-gradient")
-			.attr("x1", "0%")
-			.attr("y1", "0%")
-			.attr("x2", "100%")
-			.attr("y2", "0%");
-		$.extend([],self.settings.colorRange).reverse().forEach(function(d,i){
-			self.gradient.append("svg:stop")
-				.attr("offset",((i+1)/(12)))
-				.attr("stop-color", d)
-				.attr('id', 'stop-color-' + i)
-		});
+	self.gradient = self.legend
+	.append("svg:defs")
+		.append("svg:linearGradient")
+		.attr("id", "map-gradient")
+		.attr("x1", "0%")
+		.attr("y1", "0%")
+		.attr("x2", "100%")
+		.attr("y2", "0%");
+	$.extend([],self.settings.colorRange).reverse().forEach(function(d,i){
+		self.gradient.append("svg:stop")
+			.attr("offset",((i+1)/(12)))
+			.attr("stop-color", d)
+			.attr('id', 'stop-color-' + i)
+	});
 
-		self.legendBar = self.legend.append("g")
-		self.legendRect = self.legendBar.append('rect').attr('id', self.settings.id + '-legendrect')
+	self.legendBar = self.legend.append("g")
+	self.legendRect = self.legendBar.append('rect').attr('id', self.settings.id + '-legendrect')
 
-		self.legendLabels = self.legend.append('g')
-			.attr('transform', 'translate(' + self.settings.legend.shift+ ',' + (self.settings.legend.height) + ')')
-			.attr('class', 'axis')
+	self.legendLabels = self.legend.append('g')
+		.attr('transform', 'translate(' + self.settings.legend.shift+ ',' + (self.settings.legend.height) + ')')
+		.attr('class', 'axis')
 
-		self.legendText = self.legend.append('g')
-			.attr('transform', 'translate(' + (self.settings.legend.shift -50)+ ',' + (self.settings.legend.height/2 + 5) + ')')
-			.attr('class', 'legend-text')
-			.append('text')
-			.style('font-size', '.8em')
-			.style('cursor', 'pointer')
-	// }
+	self.legendText = self.legend.append('g')
+		.attr('transform', 'translate(' + (self.settings.legend.shift -50)+ ',' + (self.settings.legend.height/2 + 5) + ')')
+		.attr('class', 'legend-text')
+		.append('text')
+		.style('font-size', '.8em')
+		.style('cursor', 'pointer')
 
 	self.legend
 		.attr("height", self.settings.legend.height + 40)
@@ -208,10 +205,9 @@ ScatterChart.prototype.drawContinuousLegend = function() {
 		.call(self.legendAxes);
 		
 	self.legendText.text(self.shortenText(self.settings.legendLabel, 9))
-
-	// self.settings.legendBuilt = true
 }
 
+// Helper functions
 ScatterChart.prototype.getKeyByValue = function( obj, value ) {
     for( var prop in obj ) {
         if( obj.hasOwnProperty( prop ) ) {

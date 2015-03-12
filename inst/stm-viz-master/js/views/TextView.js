@@ -1,4 +1,4 @@
-// View for Chart1 -- inherited from SingleView
+// View for displaying scatter and text -- inherited from SingleView
 var TextView = function(sets) {
 	var self = this 
 	defaults = {
@@ -11,7 +11,6 @@ var TextView = function(sets) {
 		maxRadius:20,
 		defaultColor:'rgb(139, 139, 139)',
 		idVariable:'id',
-		group:'All NCDs',
 		hasControls:true,  
 	}
 	topicsObj = {}
@@ -43,6 +42,7 @@ TextView.prototype.getVariableLabels = function(varName, labelVar) {
 		})
 	}
 }
+
 TextView.prototype.getLabels = function() {
 	var self = this
 	self.settings.changedColorType = false
@@ -66,6 +66,7 @@ TextView.prototype.isDate = function(varName) {
 	var re = /^\d{4}-\d{2}-\d{2}/
 	return val.match(re) == null ? false : true
 }
+
 TextView.prototype.prepData = function(chart) {
 	var self = this
 	if(typeof self.settings.selected == 'undefined') self.settings.selected = self.settings.data[0].id
@@ -80,7 +81,6 @@ TextView.prototype.prepData = function(chart) {
 					self.changeTitle()
 					chart.update(settings[chart.settings.id], resetScale)
 				})
-				self.updatePoshys()
 			}
 			settings[chart].data = self.settings.data.map(function(d, i) {
 				var id = self.settings.idVariable == undefined ? i : d[self.settings.idVariable]
@@ -157,34 +157,13 @@ TextView.prototype.loadData = function(callback) {
     	if(arguments[i].id != undefined) args.push(arguments[i].id)
     }
 	if(self.charts == undefined) self.charts = []
-	if(typeof data != 'undefined') {
-		self.settings.data = data
-		if(self.settings.loadedData != true) self.getLabels()
-		self.settings.loadedData = true
-			if(typeof callback == 'function') {
-				callback(args)
-
-			}
+	self.settings.data = data
+	if(self.settings.loadedData != true) self.getLabels()
+	self.settings.loadedData = true
+	if(typeof callback == 'function') {
+		callback(args)
 	}
-	else if(self.settings.loadedData != true ) {
-		alert('reading csv')
-		d3.csv(self.settings.filePath, function(data) {
-			self.settings.data = data.filter(function(d,i){
-				if(d.id == undefined) d.id = i
-				return i<1000} 
-			)
-			self.settings.loadedData = true
-			if(typeof callback == 'function') {
-				callback(args)
-
-			}
-		})
-	}
-	else {
-		if(typeof callback == 'function') {
-			callback(args)
-		}
-	}
+	
 }
 
 TextView.prototype.getControlValues = function() {

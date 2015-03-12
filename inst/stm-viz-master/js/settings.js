@@ -80,7 +80,6 @@ var settings = {
 		id:'textChart', 
 		getWidth:function(chart) {
 			var width  = $('#'+chart.settings.container).width()/3 - 10
-			console.log('width ', width)
 			return width
 		},
 		getPosition:function(chart){return {

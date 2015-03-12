@@ -1,4 +1,4 @@
-// LineChart object function -- inherits from Chart
+// TextChart object function -- inherits from Chart
 var TextChart =  function(sets) {
 	var self = this 
 	defaults = {

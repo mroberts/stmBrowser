@@ -35,3 +35,11 @@ body {
 #textChart-divtitle {
 	padding-bottom:9px;
 }
+
+#control-button-out {
+	width:29px;
+}
+
+button {
+	cursor:pointer;
+}

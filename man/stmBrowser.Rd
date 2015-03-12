@@ -10,8 +10,8 @@ opens a browser with the visualization of the relationship between
 covariates and topics in the stm.
 }
 \usage{
-stmBrowser(mod, data, covariates, text, id = NULL, n = 1000, labeltype =
-"prob", directory=getwd())
+stmBrowser(mod, data, covariates, text, id = NULL,
+     n = 1000, labeltype ="prob", directory=getwd())
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -42,32 +42,30 @@ stmBrowser(mod, data, covariates, text, id = NULL, n = 1000, labeltype =
     is the current working directory.
   }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  The html file for the browser will be written to the folder the user
+  selects as \code{index.html}.  The user can open this webpage to view
+  the browser.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-  
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{stm}}
 }
 \examples{
+## Not run:
+data(poliblog5k)
+library(stm)
+#Create date
+dec312007 <- as.numeric(as.Date("2007-12-31"))
+poliblog5k.meta$date <- as.Date(dec312007+poliblogs$day,
+                          origin="1970-01-01")
+out <- prepDocuments(poliblog5k.docs, poliblog5k.voc, poliblog5k.meta)
+stm.out <- stm(out$documents, out$vocab, K=50,
+                              prevalence=~rating + date,
+                              data=out$meta, max.em.its=10) 
+library(stmBrowser)
+stmBrowser(stm.out, data=out$meta, c("rating", "date"),
+        text="text",
+directory="/home/jeffrey/Dropbox/STMviz")
+##End(not run)
 }
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

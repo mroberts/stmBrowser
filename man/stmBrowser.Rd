@@ -10,7 +10,8 @@ opens a browser with the visualization of the relationship between
 covariates and topics in the stm.
 }
 \usage{
-stmBrowser(mod, data, covariates, text, id = NULL, n = 1000, labeltype ="prob", directory=getwd())
+stmBrowser(mod, data, covariates, text, id = NULL,
+     n = 1000, labeltype ="prob", directory=getwd())
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

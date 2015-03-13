@@ -1,0 +1,260 @@
+/*General control styles*/
+
+.control-section{
+	height: 50%;
+	overflow: hidden;
+}
+
+.control-header,
+#actions .ui-button,
+.tip-ihme .ui-button{
+	color: #FFF;
+	background: #565656;
+	background: -moz-linear-gradient(top,#565656 0%,#303030 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#565656),color-stop(100%,#303030));
+	background: -webkit-linear-gradient(top,#565656 0%,#303030 100%);
+	background: -o-linear-gradient(top,#565656 0%,#303030 100%);
+	background: -ms-linear-gradient(top,#565656 0%,#303030 100%);
+	background: linear-gradient(to bottom,#565656 0%,#303030 100%);
+}
+
+#actions .ui-button{
+	border: #454545;
+}
+
+#actions .ui-button-text{
+	line-height: 15px;
+}
+
+.control-header .control-label{
+	text-align: center;
+	width: 120px;
+}
+
+.control-wrapper {
+	margin-right: 2px;
+	height: 21px;
+}
+
+.control-wrapper .control-buttonset,
+.control-wrapper .control-buttons,
+.control-wrapper .control-button,
+.control-wrapper .control-toggle{
+	text-align: center;
+}
+
+.control-lock{
+	width: 15px !important;
+	height: 15px !important;
+	float: left;
+	margin-right: 5px;
+	margin-top: 1px;
+}
+
+.control-lock .ui-button-icon-primary{
+	left: -1px;
+	margin-top: -9px;
+}
+.control-wrapper, .control-header{
+	padding: 5px;
+}
+
+.control-buttonset .ui-button-text,
+.control-button .ui-button-text,
+.control-toggle .ui-button-text{
+	padding: 0px 4px;
+}
+
+.control-buttons .ui-button{
+	padding: 3px;
+	min-width: 30px;
+	border-radius: 0px;
+	margin-right: -3px;
+	margin: 0;
+}
+
+.control-container-buttons .control-button{
+	border-radius: 0;
+	margin: 0;
+	margin-left: -1px;
+}
+
+.control-container-buttons .control-button:last-of-type{
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.control-container-buttons .control-button:first-of-type{
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.control-label-zoom{
+	margin-left: 22px;
+}
+
+.control-buttonset, .control-slider, .control-buttons .control-button {
+	display: inline-block;
+}
+
+.control-select .select2-choice,
+.control-multi-select .select2-choice,
+.ui-button  .ui-button-text{
+	line-height: 20px;
+}
+
+.control-label{
+	line-height: 22px;
+}
+
+.control-select .select2-choice,
+.control-multi-select .select2-choice,
+.control .ui-button{
+	height: 20px;
+}
+
+.control-select .select2-choice div b,
+.control-multi-select .select2-choice div b,
+.control-multi-select .select2-choice .select2-arrow b,
+.control-select .select2-choice .select2-arrow b {
+	background-position: 0 -2px;
+}
+
+.control-select .select2-choice abbr,
+.control-multi-select .select2-choice abbr{
+	top: 4px;
+}
+
+.control-label{
+	display: inline-block;
+	font-weight: bold;
+}
+
+.control-wrapper-input-set .control-label{
+	display: inline;
+	margin-right: 5px;
+}
+
+.control-value{
+	margin-left: 10px;
+}
+
+.select2-container{
+	margin-top: -3px;
+}
+
+.select2-dropdown-open{
+	position: relative;
+	z-index: 10000;
+}
+.select2-drop.select2-drop-above{
+	margin-bottom: -2px;
+}
+
+.select2-container.select2-drop-above a{
+	margin-top: 1px;
+	border-top: 0px;
+}
+
+.select2-result-label.disabled{
+	cursor: default;
+}
+
+.select2-results .select2-disabled {
+	color: #aaa;
+	background: none;
+	cursor: default;
+}
+
+.control-checkbox{
+	height: 19px;
+	padding: 0;
+	margin: 0;
+	vertical-align: bottom;
+}
+
+.control-slider, 
+.control-buttonset, 
+.control-buttons,
+.control-button, 
+.select2-container,
+.control-checkbox{
+	margin-left: 3px;
+	margin-right: 0px;
+}
+
+.control-slider{
+	margin-top: 4px;
+}
+
+.control-slider .ui-slider-handle {
+	height: 15px;
+	width: 15px;
+}
+
+.ui-button  .ui-button-text{
+	min-width: 20px;
+}
+
+.ui-buttonset .ui-button{
+	margin-right: -1px;
+}
+
+.control-slider-age_slider{
+	margin-top: 10px;
+}
+
+.control-component-display{
+	margin-bottom: 5px;
+}
+
+.control .ui-button,
+.control .ui-slider-handle,
+.control-lock.ui-button,
+.control.ui-button{
+	border: 1px solid #aaa;
+	background: #eee;
+	background-image: -webkit-linear-gradient(bottom, #ccc 0%, #eee 60%);
+	background-image: -moz-linear-gradient(bottom, #ccc 0%, #eee 60%);
+	background-image: -o-linear-gradient(bottom, #ccc 0%, #eee 60%);
+	background-image: -ms-linear-gradient(bottom, #cccccc 0%, #eeeeee 60%);
+	background-image: linear-gradient(bottom, #cccccc 0%, #eeeeee 60%);
+}
+
+.control .ui-button.ui-state-active,
+.select2-results .select2-highlighted, 
+.control.ui-button.ui-state-active,
+.ui-autocomplete.ui-widget-content .ui-state-focus{
+	background: #6cd079;
+	background-image: -webkit-linear-gradient(top, #6cd079 0%,#2d8f3a 100%);
+	background-image: -moz-linear-gradient(top, #6cd079 0%,#2d8f3a 100%);
+	background-image: -o-linear-gradient(top, #6cd079 0%,#2d8f3a 100%);
+	background-image: -ms-linear-gradient(top, #6cd079 0%,#2d8f3a 100%);
+	background-image: linear-gradient(top, #6cd079 0%,#2d8f3a 100%);
+	color: white;
+}
+
+.control .ui-button.ui-state-active,
+.control.ui-button.ui-state-active{
+	border: 1px solid #21692B;
+	cursor: default;
+}
+
+.ui-autocomplete.ui-widget-content .ui-state-focus{
+	border: none;
+	border-radius: 0px;
+}
+
+.ui-menu-item:focus{
+	outline: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
+}

@@ -19,9 +19,8 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         #Move jss files into directory
     setwd(directory)
     if(file.exists("stm-visualization")){
-        cat("stm-visualization folder already exists, type 1 to overwrite, 0 otherwise, then press Enter.")
-        y <- readLines(n=1)
-        if(y==1){
+        y <- readline(prompt="stm-visualization folder already exists, type 1 to overwrite, 0 otherwise, then press Enter. ")
+        if(y=="1"){
             dir.remove("stm-visualization")
             dir.create("stm-visualization")
             dir.create("stm-visualization/stm-viz-master")
@@ -33,16 +32,14 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
              #            sep=""))
             dir.create("stm-visualization/data")
             setwd("stm-visualization/data")
-        }else if(y==0){
-            cat("Write alternate folder name for visualization, then press enter.")
-            k <- readLines(n=1)
+        }else if(y=="0"){
+            k <- readline(prompt="Write alternate folder name for visualization, then press enter. ")
             system(paste("rm -r ", k))
             system(paste("cp -r", paste(path.package("stmBrowser"),
                                          "/stm-viz-master", sep=""), k,
                          sep=" "))
             dir.create(paste(k,"/data", sep=""))
             setwd(paste(k,"/data", sep=""))
-
         } else{
             stop("Error, invalid answer.")
         }
@@ -110,8 +107,9 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     writeLines(start, fileConn2)
     close(fileConn2)
     setwd("..")
+    dir <- getwd()
     cat(paste("URL is at ", getwd(),
                 "/index.html, opening now.", sep=""))
     setwd(oldwd)
-    browseURL(paste(getwd(), "/index.html", sep=""))
+    browseURL(paste(dir, "/index.html", sep=""))
 }

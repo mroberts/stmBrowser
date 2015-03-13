@@ -23,7 +23,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
         if(y=="1"){
           unlink("stm-visualization", recursive=TRUE)
           file.copy(sprintf("%s/stm-viz-master",path.package("stmBrowser")),
-                              "stm-visualization", recursive=TRUE)
+                              "stm-visualization", recursive=TRUE, overwrite=T)
                                         #system(paste("cp -r ", paste(path.package("stmBrowser"),
              #                            "/stm-viz-master", sep=""), " stm-visualization",
              #            sep=""))

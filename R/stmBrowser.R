@@ -26,7 +26,8 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
           files =
               list.files(sprintf("%s/stm-viz-master/",path.package("stmBrowser")))
           print(files)
-          file.copy(files, "stm-visualization")
+          file.copy(paste(path.package("stmBrowser"),
+                          "/stm-viz-master/",files, sep=""), "stm-visualization")
                                         #system(paste("cp -r ", paste(path.package("stmBrowser"),
              #                            "/stm-viz-master", sep=""), " stm-visualization",
              #            sep=""))

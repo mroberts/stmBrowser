@@ -25,7 +25,6 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
           dir.create("stm-visualization")
           files =
               list.files(sprintf("%s/stm-viz-master/",path.package("stmBrowser")))
-          print(files)
           file.copy(paste(path.package("stmBrowser"),
                           "/stm-viz-master/",files, sep=""),
                     "stm-visualization", recursive=T)
@@ -35,20 +34,26 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
             dir.create("stm-visualization/data")
             setwd("stm-visualization/data")
         }else if(y=="0"){
-            k <- readline(prompt="Write alternate folder name for visualization, then press enter. ")
-            system(paste("rm -r ", k))
-            system(paste("cp -r", paste(path.package("stmBrowser"),
-                                         "/stm-viz-master", sep=""), k,
-                         sep=" "))
+            k <-
+                readline(prompt="Write alternate folder name for visualization, then press enter. ")
+            unlink(k, recursive=TRUE)
+            files =
+                list.files(sprintf("%s/stm-viz-master/",path.package("stmBrowser")))
+            file.copy(paste(path.package("stmBrowser"),
+                            "/stm-viz-master/",files, sep=""),
+                      k, recursive=T)            
             dir.create(paste(k,"/data", sep=""))
             setwd(paste(k,"/data", sep=""))
         } else{
             stop("Error, invalid answer.")
         }
     }else{
-        system(paste("cp -r ", paste(path.package("stmBrowser"),
-                                    "/stm-viz-master", sep=""), " stm-visualization",
-                     sep=""))
+        dir.create("stm-visualization")
+        files =
+            list.files(sprintf("%s/stm-viz-master/",path.package("stmBrowser")))
+        file.copy(paste(path.package("stmBrowser"),
+                        "/stm-viz-master/",files, sep=""),
+                  "stm-visualization", recursive=T)
         dir.create("stm-visualization/data")
         setwd("stm-visualization/data")
     }

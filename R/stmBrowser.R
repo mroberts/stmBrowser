@@ -67,7 +67,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     start <- "var data = ["
     for(i in 1:nrow(data)){
         doc <- list()
-        if(!is.null(id)) doc$id <- gsub(".", "-", data[,id][i])
+        if(!is.null(id)) doc$id <- gsub("\\.", "\\-", data[,id][i])
         if(is.null(id)) doc$id <- i
         doc$body <- data[,text][i]
         for(j in 1:length(covariates)){

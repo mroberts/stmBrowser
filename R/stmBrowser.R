@@ -37,6 +37,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
             k <-
                 readline(prompt="Write alternate folder name for visualization, then press enter. ")
             unlink(k, recursive=TRUE)
+            dir.create(k)
             files =
                 list.files(sprintf("%s/stm-viz-master/",path.package("stmBrowser")))
             file.copy(paste(path.package("stmBrowser"),

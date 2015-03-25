@@ -1,16 +1,16 @@
 stmBrowser Visualization
 ============================
 
-The stmBrowser Visualization provides an interactive environment for exploring STM model results in a web browser.  The visualizatoin pairs a configurable scatter plot with the full text of a selected document.  The interactive scatterplot allows specification of the x-position, y-position, color, and radius of each document.   Using the simple stmBrowser() command, all necessary files will be saved to a directory, and the index.html file will open in your default browser (optimized for Chrome).  The visualization is built to function without running a local server or needing internet connection. 
+The stmBrowser Visualization provides an interactive environment for exploring STM model results in a web browser.  The visualizatoin pairs a configurable scatter plot with the full text of a selected document.  The interactive scatterplot allows specification of the x-position, y-position, color, and radius of each document.   Using the simple `stmBrowser()` command, all necessary files will be saved to a directory, and the index.html file will open in your default browser (optimized for Chrome).  The visualization is built to function without running a local server or needing internet connection. 
 
 
 Usage
 --------------
-The visualization reads in data saved from the R command stmBrower().  The tool will then automatically construct selection menu options based on the variables in your dataset for configuring the chart. The following data-types are currently supported:
+The visualization reads in data saved from the R command `stmBrower()`.  The tool will then automatically construct selection menu options based on the variables in your dataset for configuring the chart. The following data-types are currently supported:
 
-*X-axis, Y-axis: Continuous, categorical, date.
-*Color: Continuous, categorical
-*Radius: Continuous
+* X-axis, Y-axis: Continuous, categorical, date.
+* Color: Continuous, categorical
+* Radius: Continuous
 
 
 Code structure
@@ -49,9 +49,9 @@ Libraries
 --------------
  The visualization is built using the following libraries (it references downloaded versions, so will not reflect package updates):
 
- *[D3](http://d3js.org/)
- *[jquery](https://jquery.com/)
- *[jquery-ui](https://jqueryui.com/)
- *[poshytip](http://vadikom.com/demos/poshytip/)
- *[select2](https://select2.github.io/)
+ * [D3](http://d3js.org/)
+ * [jquery](https://jquery.com/)
+ * [jquery-ui](https://jqueryui.com/)
+ * [poshytip](http://vadikom.com/demos/poshytip/)
+ * [select2](https://select2.github.io/)
 

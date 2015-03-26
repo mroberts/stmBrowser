@@ -15,7 +15,11 @@ The package currently includes functionality to:
 * change the size, color, and orientation of topics and covariates to explore the visualization
 * click on documents within the visualization to read them
 
-##Example Screenshots
+##Example Browser and Screenshots
+[Click here](http://pages.ucsd.edu/~meroberts/stm-online-example/index.html) for an example of the browser using the [PoliBlogs dataset](http://reports-archive.adm.cs.cmu.edu/anon/ml2010/CMU-ML-10-101.pdf).
+
+A few screenshots from this example:
+
 Political blogs talk about Sarah Palin topic over the course of 2008:
 
 ![Political blogs talk about Sarah Palin topic over 2008](https://raw.githubusercontent.com/mroberts/stmBrowser/master/inst/stm-viz-master/OnlineScreenshot1.png)

@@ -2,7 +2,7 @@
 
 Website: www.structuraltopicmodel.com
 
-Authors: [Michael Freeman](http://mfviz.com) Jason Chuang [Molly Roberts](http://margaretroberts.net), [Brandon Stewart](http://scholar.harvard.edu/bstewart) and [Dustin Tingley](http://scholar.harvard.edu/dtingley)
+Authors: [Michael Freeman](http://mfviz.com), Jason Chuang, [Molly Roberts](http://margaretroberts.net), [Brandon Stewart](http://scholar.harvard.edu/bstewart) and [Dustin Tingley](http://scholar.harvard.edu/dtingley)
 
 Please email all comments/questions to molly.e.roberts [at] gmail.com
 

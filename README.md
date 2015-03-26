@@ -16,8 +16,9 @@ The package currently includes functionality to:
 * click on documents within the visualization to read them
 
 ##Example Screenshots
-[OnlineScreenshot1](https://raw.githubusercontent.com/mroberts/stmBrowser/master/inst/stm-viz-master/OnlineScreenshot1.png)
-[OnlineScreenshot2](https://raw.githubusercontent.com/mroberts/stmBrowser/master/inst/stm-viz-master/OnlineScreenshot2.png)
+![Political blogs talk about Sarah Palin topic over 2008](https://raw.githubusercontent.com/mroberts/stmBrowser/master/inst/stm-viz-master/OnlineScreenshot1.png)
+
+![Conservative versus liberal talk about financial crisis 2008](https://raw.githubusercontent.com/mroberts/stmBrowser/master/inst/stm-viz-master/OnlineScreenshot2.png)
 ###Other Resources
 
 Papers on the Structural Topic Model:

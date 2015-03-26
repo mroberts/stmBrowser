@@ -16,9 +16,13 @@ The package currently includes functionality to:
 * click on documents within the visualization to read them
 
 ##Example Screenshots
+Political blogs talk about Sarah Palin topic over the course of 2008:
+
 ![Political blogs talk about Sarah Palin topic over 2008](https://raw.githubusercontent.com/mroberts/stmBrowser/master/inst/stm-viz-master/OnlineScreenshot1.png)
 
+Differences in conservative and libaral talk about the financial crisis, in 2008:
 ![Conservative versus liberal talk about financial crisis 2008](https://raw.githubusercontent.com/mroberts/stmBrowser/master/inst/stm-viz-master/OnlineScreenshot2.png)
+
 ###Other Resources
 
 Papers on the Structural Topic Model:

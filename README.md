@@ -15,6 +15,9 @@ The package currently includes functionality to:
 * change the size, color, and orientation of topics and covariates to explore the visualization
 * click on documents within the visualization to read them
 
+##Example Screenshots
+[OnlineScreenshot1](inst/stm-viz-master/OnlineScreenshot1.png)
+
 ###Other Resources
 
 Papers on the Structural Topic Model:

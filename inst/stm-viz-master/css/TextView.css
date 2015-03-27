@@ -7,8 +7,8 @@
 
 #bottom {
 	position: fixed;
-	width: calc(100% - 27px);
-	bottom: 0px;
+	width: 100%;
+	bottom: 10px;
 	border-top: solid #d3d3d3 1px;
 	text-align: center;
 	background: white;
@@ -49,4 +49,11 @@ button {
 	right:5px;
 	bottom:4px;
 	opacity:.5;
+}
+
+#credit {
+	position:absolute;
+	right:3px;
+	bottom:3px;
+	font-size:12px;
 }

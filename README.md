@@ -8,7 +8,7 @@ Please email all comments/questions to molly.e.roberts [at] gmail.com
 
 ###Summary
 
-This repository will host the development version of the STM Browser.  It is also available on CRAN. It provides an interactive environment for exploring STM model results in a web browser.  The visualization pairs a configurable scatter plot with the full text of a selected document.  The interactive scatterplot allows specification of the x-position, y-position, color, and radius of each document based on metdata.  
+This repository will host the development version of the STM Browser.  It is also available on CRAN. It provides an interactive environment for exploring STM model results in a web browser, optimized for Chrome.  The visualization pairs a configurable scatter plot with the full text of a selected document.  The interactive scatterplot allows specification of the x-position, y-position, color, and radius of each document based on metdata.  
 
 The package currently includes functionality to:
 * visualize both continuous and categorical covariate relationships with topics

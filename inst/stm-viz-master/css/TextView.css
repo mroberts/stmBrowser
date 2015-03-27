@@ -7,7 +7,7 @@
 
 #bottom {
 	position: fixed;
-	width: 100%;
+	width: calc(100% - 27px);
 	bottom: 0px;
 	border-top: solid #d3d3d3 1px;
 	text-align: center;
@@ -42,4 +42,11 @@ body {
 
 button {
 	cursor:pointer;
+}
+
+#gh-link{
+	position:absolute;
+	right:5px;
+	bottom:4px;
+	opacity:.5;
 }

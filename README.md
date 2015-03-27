@@ -20,11 +20,11 @@ The package currently includes functionality to:
 
 A few screenshots from this example:
 
-Political blogs talk about Sarah Palin topic over the course of 2008:
+Political blogs write about Sarah Palin topic over the course of 2008:
 
 ![Political blogs talk about Sarah Palin topic over 2008](https://raw.githubusercontent.com/mroberts/stmBrowser/master/screenshots/OnlineScreenshot1.png)
 
-Differences in conservative and libaral talk about the financial crisis, in 2008:
+Comparison of conservative and libaral blogs on the financial crisis, in 2008:
 ![Conservative versus liberal talk about financial crisis 2008](https://raw.githubusercontent.com/mroberts/stmBrowser/master/screenshots/OnlineScreenshot2.png)
 
 ###Other Resources

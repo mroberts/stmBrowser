@@ -69,5 +69,5 @@ setwd(tempdir())
 stmBrowser(stm.out, data=out$meta, c("rating", "date"),
                    text="text")
 #Remove files
-unlink("stm-visualization", recursive=T)
+unlink("stm-visualization", recursive=TRUE)
 }

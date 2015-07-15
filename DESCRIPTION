@@ -1,6 +1,6 @@
 Package: stmBrowser
 Type: Package
-Title: An R Package for the Structural Topic Model Browser
+Title: Structural Topic Model Browser
 Version: 1.0
 Date: 2015-07-02
 Author: Michael K. Freeman, Jason Chuang, Margaret E. Roberts, Brandon M. Stewart and Dustin Tingley
